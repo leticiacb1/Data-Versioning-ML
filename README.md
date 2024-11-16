@@ -1,28 +1,16 @@
-<<<<<<< HEAD
-## Data Versioning
-=======
 ## 📑 Data Versioning
->>>>>>> e731de9 (first commit)
 
 Beyond the source code and experiment results, an important part of every ML product lifecycle involves data.
 
 > More data beats clever algorithms, but better data beats more data.
 
-<<<<<<< HEAD
-### Data Version Control - [DVC](https://dvc.org/)
-=======
 #### Data Version Control - [DVC](https://dvc.org/)
->>>>>>> e731de9 (first commit)
 
 Provides a git-like experience to organize your data, models, and experiments.
 
 With DVC, we added the ability to maintain data versioning, without necessarily using the repository as storage.
 
-<<<<<<< HEAD
-### How to use this project
-=======
 ### 📌 How to use this project
->>>>>>> e731de9 (first commit)
 
 #### Store Locally Data
 
