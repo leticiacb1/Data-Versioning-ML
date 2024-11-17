@@ -10,13 +10,9 @@ Provides a git-like experience to organize your data, models, and experiments.
 
 With DVC, we added the ability to maintain data versioning, without necessarily using the repository as storage.
 
-### 📌 How to use this project
+### Dependencies
 
-#### Store Locally Data
-
-1. Create a git repository
-
-2. Create a venv and install dependencies
+Create a `venv` and install dependencies
 
 ```bash
     # Create environment
@@ -26,11 +22,27 @@ With DVC, we added the ability to maintain data versioning, without necessarily 
     $ source venv/bin/activate
 
     # Install dependencies
-    $ pip install -U pip
-    $ pip install "dvc[s3]"
+    $ pip install -r requirements.txt
 ```
 
-3. Init and configure dvc
+Also create a `.env` file with the following:
+
+```bash
+    # .env content'
+    AWS_ACCESS_KEY_ID="XXXXXXXXXXXXXX"
+    AWS_SECRET_ACCESS_KEY="aaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    AWS_REGION="xx-xxxx-2"
+    AWS_LAMBDA_ROLE_ARN="arn:xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+
+### 📌 How to use this project
+
+#### Store Locally Data
+
+1. Create a git repository
+
+2. Init and configure dvc
 
 ```bash
  # Root of git repository run:
@@ -43,7 +55,7 @@ With DVC, we added the ability to maintain data versioning, without necessarily 
  $ dvc add data/data.csv
 ```
 
-4. Commit and add change to git repository:
+3. Commit and add change to git repository:
 
 ```bash
  $ git add data/data.csv.dvc data/.gitignore
@@ -51,7 +63,7 @@ With DVC, we added the ability to maintain data versioning, without necessarily 
  $ git push
 ```
 
-5. Store data locally
+4. Store data locally
  
  Create a repository outside the repository
 
@@ -90,7 +102,7 @@ Add all changes
  $ git tag -a v0.0.0 -m "Release version 0.0.0"
 ```
 
-6. New features add to data
+5. New features add to data
 
 Update data folder with the new data
 
@@ -134,23 +146,7 @@ Open the file data/data.csv and see the changes:
 
 1. Create a git repository
 
-2. Create a venv and install dependencies
-
-```bash
-    # Create environment
-    $ python3 -m venv venv  
-
-    # Activate environment
-    $ source venv/bin/activate
-
-    # Install dependencies
-    $ pip install -r requirements.txt
-
-    $ pip install -U pip
-    $ pip install "dvc[s3]"
-```
-
-3. Init and configure dvc
+2. Init and configure dvc
 
 ```bash
     $ dvc init
@@ -158,7 +154,7 @@ Open the file data/data.csv and see the changes:
     $ dvc add data/data.csv
 ```
 
-4. Commit data to git repository
+3. Commit data to git repository
 
 ```bash
     $ git add data/data.csv.dvc data/.gitignore
@@ -166,7 +162,7 @@ Open the file data/data.csv and see the changes:
     $ git push
 ```
 
-5. Create a S3 Bucket
+4. Create a S3 Bucket
 
 Run this code to create a bucket:
 
@@ -174,7 +170,7 @@ Run this code to create a bucket:
     $ python3 src/utils/create_bucket.py
 ```
 
-6. Configure S3 Storage
+5. Configure S3 Storage
 
 ```bash
     $ dvc remote add myremote s3://<bucket-name>
@@ -182,13 +178,13 @@ Run this code to create a bucket:
     $ dvc push
 ```
 
-7. Check if data was stored
+6. Check if data was stored
 
 ```bash
   $ python3 src/utils/read_bucket_content.py
 ```
 
-8. Deletye the bucket:
+7. Delete the bucket:
 
 ```bash
   $ python3 src/utils/delete_bucket.py
